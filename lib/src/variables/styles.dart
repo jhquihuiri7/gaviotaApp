@@ -4,3 +4,4 @@ TextStyle titleText = const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,
 TextStyle subtitleText = const TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 TextStyle headersText = const TextStyle(fontSize: 17, fontWeight: FontWeight.bold);
 TextStyle bodyText = const TextStyle(fontSize: 15);
+TextStyle iconText = const TextStyle(fontSize: 10, fontStyle: FontStyle.italic);

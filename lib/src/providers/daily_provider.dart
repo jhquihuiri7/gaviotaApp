@@ -21,7 +21,6 @@ class DailyProvider extends ChangeNotifier {
   List<DailyModel> get GetModels => _models;
   set GetModels (List<DailyModel>   value){
     _models = value;
-    notifyListeners();
   }
   set RemoveModel (DailyModel value){
     _models.remove(value);
@@ -32,7 +31,6 @@ class DailyProvider extends ChangeNotifier {
   List<DailyModel> get GetModelsOther => _modelsOther;
   set GetModelsOther (List<DailyModel> value){
     _modelsOther = value;
-    notifyListeners();
   }
   set RemoveModelOther (DailyModel value){
     _modelsOther.remove(value);

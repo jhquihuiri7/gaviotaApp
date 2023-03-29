@@ -23,7 +23,7 @@ class DailyGaviotaPage extends StatelessWidget {
     ]);
     final dailyProvider = Provider.of<DailyProvider>(context);
     return Scaffold(
-      appBar: AppBarWidget(context),
+      appBar: AppBarWidget(context,ship:"Gaviota"),
       drawer: DrawerWidget(context),
       body: SafeArea(
         child: Padding(
@@ -44,7 +44,7 @@ class DailyGaviotaPage extends StatelessWidget {
                 Container(color: Theme
                     .of(context)
                     .primaryColor, height: 1.5, width: double.infinity,),
-                ListContentWidget(),
+                ListContentWidget(ship: 'gaviota',),
               ]
           ),
         ),

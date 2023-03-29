@@ -10,7 +10,9 @@ import '../variables/styles.dart';
 import 'container_width_widget.dart';
 
 class ListContentWidget extends StatefulWidget {
-  const ListContentWidget({Key? key}) : super(key: key);
+  final String ship;
+
+  const ListContentWidget({Key? key, required this.ship}) : super(key: key);
 
   @override
   State<ListContentWidget> createState() => _ListContentWidgetState();
@@ -23,13 +25,15 @@ class _ListContentWidgetState extends State<ListContentWidget> {
     final dailyProvider = Provider.of<DailyProvider>(context);
     return FutureBuilder<List<DailyModel>>(
         future: DailyReserves().Daily(
-            DateTime(now.year, now.month, now.day, 0, 0, 0, 0, 0), "gaviota"),
+            DateTime(now.year, now.month, now.day, 0, 0, 0, 0, 0), widget.ship),
         builder: (ctx, s) {
           List<DailyModel> data = [];
           List<Widget> dataWidget = [];
           if (s.hasData) {
+            (widget.ship == "gaviota") ? dailyProvider.GetModels = s.data!: dailyProvider.GetModelsOther = s.data!;
+
+            dailyProvider.CountTime(dailyProvider, widget.ship);
             s.data?.forEach((element) {
-              print(element);
               if (element.time == dailyProvider.GetTimeString) {
                 Widget temp = Dismissible(
                   background: Container(
@@ -83,7 +87,6 @@ class _ListContentWidgetState extends State<ListContentWidget> {
                   ),
                   onDismissed: (direccion) async {
                     String resp = await Reserves().DeleteReserve(element.id);
-                    print(resp);
                     dailyProvider.RemoveModel = element;
                   },
                 );
