@@ -23,11 +23,17 @@ Widget DrawerWidget(BuildContext context ){
             child: Image(image: AssetImage("assets/icon/icon-min.png"))
         ),
         Text(LocalStorage.prefs.getString('user')!.toUpperCase(), style: iconText,),
+        Container(
+          margin:EdgeInsets.symmetric(vertical: 10),
+          height:1,
+          width: double.infinity,
+          color:Colors.black.withOpacity(0.2)
+        ),
         ListTile(
           leading: Icon(Icons.safety_divider_rounded, color: Theme.of(context).primaryColor, size: 35,),
           title: Text("Nueva reserva"),
           onTap: () {
-            Navigator.pushReplacementNamed(context, "dailyGaviota");
+            Navigator.pushReplacementNamed(context, "addReserves");
           },
         ),
         ListTile(

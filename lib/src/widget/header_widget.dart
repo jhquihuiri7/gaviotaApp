@@ -15,19 +15,25 @@ class HeaderWidget extends StatelessWidget {
       children: [
         TextWidget(
           style: titleText,
-          text: "Información ${ship}",
+          text: (ship == "reservas") ? "Nuevas reservas":"Información ${ship}",
         ),
         IconButton(
+            iconSize: 60,
             onPressed: () {
               LocalStorage.prefs.remove("token");
               LocalStorage.prefs.remove("user");
               LocalStorage.prefs.remove("rol");
               Navigator.pushReplacementNamed(context, "login");
             },
-            icon: const Image(
-              image: AssetImage("assets/icon/icon-min.png"),
-              height: 40,
-              width: 40,
+            icon: Column(
+              children: [
+                const Image(
+                  image: AssetImage("assets/icon/icon-min.png"),
+                  height: 40,
+                  width: 40,
+                ),
+                Text("Cerrar Sesión", style: iconText),
+              ],
             )),
       ],
     );

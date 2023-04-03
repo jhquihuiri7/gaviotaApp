@@ -3,6 +3,7 @@ import 'package:gaviota_app/src/models/login_model.dart';
 import 'package:gaviota_app/src/pages/daily_gaviota.dart';
 import 'package:gaviota_app/src/pages/daily_other.dart';
 import 'package:gaviota_app/src/pages/login_page.dart';
+import 'package:gaviota_app/src/pages/add_reserves_page.dart';
 import 'package:gaviota_app/src/providers/daily_provider.dart';
 import 'package:gaviota_app/src/requests/authentication.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
             "login": (_) => LoginPage(),
             "dailyGaviota": (_) => DailyGaviotaPage(),
             "dailyOther": (_) => DailyOtherPage(),
+            "addReserves": (_) => AddReservePage(),
           },
         );
       },
