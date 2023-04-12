@@ -13,13 +13,20 @@ class DailyReserves {
 
     final Map<String, dynamic> body = {
       'date': "${format.format(date)}T00:00:00.000+00:00".replaceAll("/", "-"),
+      //'date': "2023-04-30T00:00:00.000+00:00".replaceAll("/", "-"),
     };
     final Map<String, String> headers = {
       HttpHeaders.authorizationHeader: token,
     };
     final response = await http.post(url, body: json.encode(body), headers: headers);
     final decodedResp = jsonDecode(response.body);
-    List<DailyModel> models = DailyModels().Models(decodedResp);
+    List<DailyModel> models;
+    if (decodedResp.contains("error")){
+      models = [];
+    }else {
+      models = DailyModels().Models(decodedResp);
+    }
+
     return models;
   }
 }

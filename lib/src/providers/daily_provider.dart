@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaviota_app/src/models/daily_model.dart';
+import 'package:provider/provider.dart';
 
 
 class DailyProvider extends ChangeNotifier {
@@ -45,17 +46,14 @@ class DailyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int CountTime (DailyProvider provider, String ship){
-    int count = 0;
-    if (ship == "gaviota"){
-      provider.GetModels.forEach((element) {if (element.time == (provider.GetTimeString)){
-        count++;
-      }});
-    }else{
-      provider.GetModelsOther.forEach((element) {if (element.time == (provider.GetTimeString)){
-        count++;
-      }});
-    }
-    return count;
+  List<int> _conteo = [0,0];
+  List<int> get conteo => _conteo;
+  set conteo(List<int> value){
+    int n = 0;
+    _models.forEach((element) { if (element.time == "Am"){n++;}});
+    conteo[0]= n;
+    n =0;
+    _models.forEach((element) { if (element.time == "Pm"){n++;}});
+    conteo[1]= n;
   }
 }

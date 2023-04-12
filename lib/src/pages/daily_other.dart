@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaviota_app/src/widget/appbar_widget.dart';
+import 'package:gaviota_app/src/widget/fab_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
@@ -21,9 +22,9 @@ class DailyOtherPage extends StatelessWidget {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    final dailyProvider = Provider.of<DailyProvider>(context);
     return Scaffold(
       appBar: AppBarWidget(context, ship: "Otras Lanchas"),
+      floatingActionButton: FabWidget(context),
       drawer: DrawerWidget(context),
       body: SafeArea(
         child: Padding(
@@ -35,8 +36,6 @@ class DailyOtherPage extends StatelessWidget {
                   children: [
                     DatePickerWidget(ship: "other",),
                     DropdownWidget(),
-                    TextWidget(text: "${dailyProvider.CountTime(
-                        dailyProvider, "other")}/38", style: subtitleText),
                   ],
                 ),
                 SizedBox(height: 5,),

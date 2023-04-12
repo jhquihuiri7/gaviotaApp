@@ -7,6 +7,7 @@ import '../providers/daily_provider.dart';
 import '../variables/styles.dart';
 import '../widget/date_picker_widget.dart';
 import '../widget/dropdown_widget.dart';
+import '../widget/fab_widget.dart';
 import '../widget/header_widget.dart';
 import '../widget/list_content_widget.dart';
 import '../widget/text_widget.dart';
@@ -25,6 +26,7 @@ class DailyGaviotaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarWidget(context,ship:"Gaviota"),
       drawer: DrawerWidget(context),
+      floatingActionButton: FabWidget(context),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -35,8 +37,6 @@ class DailyGaviotaPage extends StatelessWidget {
                   children: [
                     DatePickerWidget(ship: "gaviota",),
                     DropdownWidget(),
-                    TextWidget(text: "${dailyProvider.CountTime(
-                        dailyProvider, "gaviota")}/38", style: subtitleText),
                   ],
                 ),
                 SizedBox(height: 5,),

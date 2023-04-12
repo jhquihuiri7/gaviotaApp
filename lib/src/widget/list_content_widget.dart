@@ -22,17 +22,15 @@ class _ListContentWidgetState extends State<ListContentWidget> {
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
-    final dailyProvider = Provider.of<DailyProvider>(context);
+    final dailyProvider = Provider.of<DailyProvider>(context, listen: false);
     return FutureBuilder<List<DailyModel>>(
         future: DailyReserves().Daily(
             DateTime(now.year, now.month, now.day, 0, 0, 0, 0, 0), widget.ship),
         builder: (ctx, s) {
-          List<DailyModel> data = [];
           List<Widget> dataWidget = [];
           if (s.hasData) {
             (widget.ship == "gaviota") ? dailyProvider.GetModels = s.data!: dailyProvider.GetModelsOther = s.data!;
-
-            dailyProvider.CountTime(dailyProvider, widget.ship);
+            dailyProvider.conteo = [0,0];
             s.data?.forEach((element) {
               if (element.time == dailyProvider.GetTimeString) {
                 Widget temp = Dismissible(
